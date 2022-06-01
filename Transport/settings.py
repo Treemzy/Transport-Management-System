@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-$6(2i@tj+w!z)^yq62jnl9_@&x1kyc2x4_idi*t%dhj+v^q%-w'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['treemzy-transport.herokuapp.com', '127.0.0.1']
 AUTH_USER_MODEL = 'users.User'
@@ -154,5 +154,5 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = '3remzy@gmail.com'
-EMAIL_HOST_PASSWORD = 'cutepancy197'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
