@@ -1,0 +1,27 @@
+{% extends "users/base.html" %}
+{% block content %}
+<div class="container frmw">
+	<div class="">
+        <div class="card">
+            <div class="card-body">
+                <div class="profile-description">
+                    <h5>
+                            Amount : NGN {{ object.amount}}
+                        </h5>
+                        <h5>Start Point: {{ object.start}}</h5>
+                        <h5>Destination: {{ object.end}}</h5>
+                        <h5>Driver: {{ object.vehicle}}</h5>
+                        <h5>Vehicle Number: {{ object.vehicle.serialNumber}}</h5>
+                        <h5>Email: {{ object.email}}</h5>
+                        <h5>REF: {{ object.ref}}</h5>
+                        <h5>Date: {{ object.createDate}}</h5>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <a href="javascript:window.history.back();" class="btn btn-danger" style="margin-top:10px;">Go Back</a>
+</div>
+
+{% endblock content %}

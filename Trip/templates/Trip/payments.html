@@ -1,0 +1,93 @@
+{% extends "users/base.html" %}
+{% block content %}
+ <div class="container-fluid frmw" style="padding:50px;">
+     <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+               <table class="table table-hover">
+                   <div>
+                       <h3 class="">
+                            <span>
+                              Payments History
+                            </span>
+                       </h3>
+                   </div>
+                   <thead>
+                        <tr>
+
+                            <th>Sender</th>
+                            <th>Sender Email</th>
+                            <th>Start Point</th>
+                            <th>Destination</th>
+                            <th>Amount</th>
+                            <th>REF NO</th>
+                            <th>Vehicle Number</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                        </tr>
+                   </thead>
+                    <tbody>
+                        {% for trip in trip %}
+
+                                <tr onclick="document.location = '{% url 'Transaction-Detail' trip.id %}';" style="cursor: pointer; font-size:14px !important;">
+                                    <td>{{ trip.creator}}</td>
+                                    <td>{{ trip.email}}</td>
+                                    <td>{{ trip.start}}</td>
+                                    <td>{{ trip.end}}</td>
+                                     <td>NGN {{ trip.amount}}</td>
+                                    <td>{{ trip.ref|truncatechars:35}}</td>
+                                    <td>{{ trip.vehicle.serialNumber}}</td>
+                                    <td>{{ trip.createDate}}</td>
+                                    {% if trip.verified == True %}
+                                        <td class="badge badge-pill badge-success" style="margin-top:3px;">Successful</td>
+                                     {% else %}
+                                         <td class="badge badge-pill badge-danger" style="margin-top:3px;">Declined</td>
+                                    {% endif %}
+
+
+
+                               </tr>
+
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% if is_paginated %}
+                    <nav class="mb-4">
+                      <ul class="pagination">
+                        {% if page_obj.has_previous %}
+                          <li class="page-item">
+                            <a class="page-link" href="?page=1">First</a>
+                          </li>
+                          <li class="page-item">
+                            <a class="page-link" href="?page={{page_obj.previous_page_number}}">Previous</a>
+                          </li>
+                        {% endif %}
+
+                        {% for num in page_obj.paginator.page_range %}
+                            {% if page_obj.number == num %}
+                             <li class="page-item active">
+                                <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                             </li>
+                            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                              <li class="page-item">
+                                <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                              </li>
+                            {% endif %}
+                        {% endfor %}
+                        {% if page_obj.has_next %}
+                          <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.next_page_number}}">Next</a>
+                          </li>
+                          <li class="page-item">
+                            <a class="page-link" href="?page={{page_obj.paginator.num_pages}}">Last</a>
+                          </li>
+                        {% endif %}
+                      </ul>
+                    </nav>
+                {% endif %}
+
+            </div>
+        </div>
+     </div>
+    </div>
+{% endblock content %}

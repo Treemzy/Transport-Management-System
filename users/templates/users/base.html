@@ -1,0 +1,56 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Uni-Abuja Transport Management System</title>
+    <link rel="stylesheet" href="{% static 'css/mjstyle.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"/>
+    <link rel="stylesheet"  href="{% static 'fonts/css/font-awesome.css' %}"/>
+</head>
+<body>
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
+  <a class="navbar-brand" href="{% url 'home' %}">Uni-Abuja TMS</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarScroll">
+    <ul class="navbar-nav mr-auto my-2 my-lg-0 navbar-nav-scroll">
+           <li class="nav-item"><a class="nav-link" href="{% url 'index' %}">Home</a></li>
+           <li class="nav-item"><a class="nav-link" href="">About</a></li>
+           <li class="nav-item"><a class="nav-link" href="">Contact</a></li>
+           <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Trip</a></li>
+    </ul>
+    <ul class="nav navbar-right">
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'profile' %}">
+                <img class="img-fluid rounded-circle" style="height: 32px; width: 32px;" src="{{ request.user.profile.image.url }}">
+                {{ request.user.username }}
+            </a>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'transaction' %}"><i class="fa fa-file-o"></i> Transactios History</a></li>
+         <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}"><i class="fa fa-power-off"></i> Log-Out</a></li>
+        {% else %}
+         <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#"  role="button" data-toggle="dropdown">
+              <i class="fa fa-edit"> Sign Up</i>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{% url 'passenger_register' %}">Register As Passenger</a>
+              <a class="dropdown-item" href="{% url 'driver_register' %}">Register As Driver</a>
+            </div>
+         </li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'login' %}"><i class="fa fa-sign-in"></i> Login</a></li>
+        {% endif%}
+    </ul>
+  </div>
+</nav>
+
+    {% block content %} {% endblock %}
+ <script src="{% static 'js/popper.min.js' %}" ></script>
+ <script src="{% static 'js/jquery.min.js' %}"></script>
+ <script src="{% static 'js/bootstrap.js' %}"></script>
+ <script src="{% static 'js/lga.js' %}" ></script>
+</body>
+</html>

@@ -1,0 +1,172 @@
+{% extends "users/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container-fluid">
+    <div class="container p-5">
+        <a href="javascript:window.history.back();" class="btn btn-danger">Go Back</a>
+        <h2 class="text-center" id="title">Driver's Sign-Up Form</h2>
+         <p class="text-center">
+            <small id="passwordHelpInline" class="text-muted"> Developer: follow me on facebook <a href="https://www.facebook.com/JheanYu"> John niro yumang</a> inspired from <a href="https://p.w3layouts.com/">https://p.w3layouts.com/</a>.</small>
+        </p>
+
+        <hr>
+        <div class="row">
+            <div class="col-md-12">
+                <form action="{% url 'driver_register' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-6">
+                             <div class="form-group">
+                                <label class="control-label">USERNAME</label>
+                                {{form.username|as_crispy_field}}
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label">EMAIL</label>
+                                {{form.email|as_crispy_field}}
+                             </div>
+                        </div>
+                        <div class="col-md-6">
+                             <div class="form-group">
+                                <label class="control-label">PASSWORD</label>
+                                {{form.password1|as_crispy_field}}
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label">CONFIRM PASSWORD</label>
+                                {{form.password2|as_crispy_field}}
+                             </div>
+                        </div>
+                         <div class="col-md-6">
+                             <div class="form-group">
+                                <label class="control-label">FIRST NAME</label>
+                                {{form.first_name|as_crispy_field}}
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label">LAST NAME</label>
+                                {{form.last_name|as_crispy_field}}
+                             </div>
+                        </div>
+                         <div class="col-md-6">
+                             <div class="form-group">
+                                <label class="control-label">OTHER NAME</label>
+                                {{form.other_name|as_crispy_field}}
+                              </div>
+                             <div class="form-group">
+                                <label class="control-label">DATE OF BIRTH</label>
+                                {{form.dob|as_crispy_field}}
+                             </div>
+                        </div>
+                        <div class="col-md-6">
+                              <div class="form-group">
+                                <label class="control-label">GENDER</label>
+                                {{form.gender|as_crispy_field}}
+                             </div>
+                            <div class="form-group">
+                                <label class="control-label">EDUCATION QUALIFICATION</label>
+                                {{form.edQlf|as_crispy_field}}
+                             </div>
+                        </div>
+                        <div class="col-md-6">
+                              <div class="form-group">
+                                <label class="control-label">CAR TYPE</label>
+                                {{form.carType|as_crispy_field}}
+                             </div>
+                            <div class="form-group">
+                                <label class="control-label">MARITAL STATUS</label>
+                                {{form.maritalStatus|as_crispy_field}}
+                             </div>
+                        </div>
+                         <div class="col-md-6">
+                             <div class="form-group">
+                                <label class="control-label">STATE</label>
+                                <select
+                                  onchange="toggleLGA(this);"
+                                  name="state"
+                                  id="state"
+                                  class="form-control"
+                                >
+                                  <option value="" selected="selected">- Select -</option>
+                                  <option value="Abia">Abia</option>
+                                  <option value="Adamawa">Adamawa</option>
+                                  <option value="AkwaIbom">AkwaIbom</option>
+                                  <option value="Anambra">Anambra</option>
+                                  <option value="Bauchi">Bauchi</option>
+                                  <option value="Bayelsa">Bayelsa</option>
+                                  <option value="Benue">Benue</option>
+                                  <option value="Borno">Borno</option>
+                                  <option value="Cross River">Cross River</option>
+                                  <option value="Delta">Delta</option>
+                                  <option value="Ebonyi">Ebonyi</option>
+                                  <option value="Edo">Edo</option>
+                                  <option value="Ekiti">Ekiti</option>
+                                  <option value="Enugu">Enugu</option>
+                                  <option value="FCT">FCT</option>
+                                  <option value="Gombe">Gombe</option>
+                                  <option value="Imo">Imo</option>
+                                  <option value="Jigawa">Jigawa</option>
+                                  <option value="Kaduna">Kaduna</option>
+                                  <option value="Kano">Kano</option>
+                                  <option value="Katsina">Katsina</option>
+                                  <option value="Kebbi">Kebbi</option>
+                                  <option value="Kogi">Kogi</option>
+                                  <option value="Kwara">Kwara</option>
+                                  <option value="Lagos">Lagos</option>
+                                  <option value="Nasarawa">Nasarawa</option>
+                                  <option value="Niger">Niger</option>
+                                  <option value="Ogun">Ogun</option>
+                                  <option value="Ondo">Ondo</option>
+                                  <option value="Osun">Osun</option>
+                                  <option value="Oyo">Oyo</option>
+                                  <option value="Plateau">Plateau</option>
+                                  <option value="Rivers">Rivers</option>
+                                  <option value="Sokoto">Sokoto</option>
+                                  <option value="Taraba">Taraba</option>
+                                  <option value="Yobe">Yobe</option>
+                                  <option value="Zamfara">Zamafara</option>
+                                </select>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label">LGA</label>
+                                 <select
+                                  name="lga"
+                                  id="lga"
+                                  class="form-control select-lga"
+                                  required
+                                >
+                                </select>
+                             </div>
+                        </div>
+                        <div class="col-md-6">
+                             <div class="form-group">
+                                <label class="control-label">NEXT OF KIN</label>
+                                {{form.nok|as_crispy_field}}
+                              </div>
+                             <div class="form-group">
+                                <label class="control-label">PHONE NUMBER</label>
+                                {{form.phoneNumber|as_crispy_field}}
+                              </div>
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">PLATE NUMBER</label>
+                                {{form.plateNumber|as_crispy_field}}
+                            </div>
+                             <div class="form-group">
+                                <label class="control-label">ARE YOU THE CAR OWNER ?</label>
+                                {{form.is_car_owner|as_crispy_field}}
+                             </div>
+                        </div>
+                         <div class="col-md-6">
+                             <div class="form-group">
+                                <label class="control-label">ADDRESS</label>
+                                {{form.address|as_crispy_field}}
+                             </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-secondary btn-block">Sign-Up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

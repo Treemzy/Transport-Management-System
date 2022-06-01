@@ -1,0 +1,8 @@
+{% extends "Trip/base.html"%}
+{% load crispy_forms_tags %}
+{% block content %}
+     <div class="container">
+         <h5>Please Login To Start Trip</h5>
+         <a href="{% url 'home'}" class="btn btn-primary">Login</a>
+     </div>
+{% endblock content%}

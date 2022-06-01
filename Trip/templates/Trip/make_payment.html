@@ -1,0 +1,55 @@
+{% extends "Trip/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+     <div class="container">
+          <div class="card cnm">
+              <h5 class="card-header">Confirm Payment </h5>
+              <div class="card-body">
+                    <div class="about profile-description">
+                         <h5>
+                            Amount : NGN {{ payment.amount}}
+                        </h5>
+                        <h5>Start Point: {{ payment.start}}</h5>
+                        <h5>Destination: {{ payment.end}}</h5>
+                        <h5>Driver: {{ payment.vehicle}}</h5>
+                        <h5>Vehicle Number: {{ payment.vehicle.serialNumber}}</h5>
+                        <h5>Email: {{ payment.email}}</h5>
+                        <h5>REF: {{ payment.ref}}</h5>
+                        <h5>Date: {{ payment.createDate}}</h5>
+
+                        <script src="https://js.paystack.co/v1/inline.js"></script>
+                        <button type="submit" class="btn btn-large btn-success" onclick="payWIthPayStack()" id="django-paystack-button">
+                            Make Payments
+                        </button>
+                    </div>
+                </div>
+            </div>
+     </div>
+
+
+<script>
+    function payWIthPayStack() {
+        let currency = "NGN";
+        let plan = "";
+        let ref = "{{payment.ref}}"
+        let obj = {
+            key: "{{paystack_public_key}}",
+            email: '{{ payment.email}}',
+            amount: '{{payment.amount_value}}',
+            ref: ref,
+            callback: function(response){
+                window.location.href = "{% url 'verify-payment' payment.ref %}";
+            }
+        }
+        if(Boolean(currency)){
+            obj.currency = currency.toUpperCase()
+        }
+        if(Boolean(plan)){
+            obj.plan = plan;
+        }
+
+        var  handler = PaystackPop.setup(obj);
+        handler.openIframe();
+    }
+</script>
+{% endblock content %}

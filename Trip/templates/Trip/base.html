@@ -1,0 +1,130 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Uni-Abuja Transport Management System</title>
+    <link rel="stylesheet" href="{% static 'css/mjstyle.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"/>
+    <link rel="stylesheet"  href="{% static 'fonts/css/font-awesome.css' %}"/>
+    <style>
+        .profile-description {
+            padding: 15px;
+            font-size: 15px;
+            color: #000;
+            margin: 5px 0px;
+            background-color: #F1F2F3;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+ <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
+  <a class="navbar-brand" href="{% url 'home' %}">Uni-Abuja TMS</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarScroll">
+    <ul class="navbar-nav mr-auto my-2 my-lg-0 navbar-nav-scroll">
+           <li class="nav-item"><a class="nav-link" href="{% url 'index' %}">Home</a></li>
+           <li class="nav-item"><a class="nav-link" href="">About</a></li>
+           <li class="nav-item"><a class="nav-link" href="">Contact</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Trip</a></li>
+    </ul>
+    <ul class="nav navbar-right">
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'profile' %}">
+                <img class="img-fluid rounded-circle" style="height: 32px; width: 32px;" src="{{ request.user.profile.image.url }}">
+                {{ request.user.username }}
+            </a>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'transaction' %}"><i class="fa fa-file-o"></i> Transactios History</a></li>
+         <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}"><i class="fa fa-power-off"></i> Log-Out</a></li>
+        {% else %}
+         <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#"  role="button" data-toggle="dropdown">
+              <i class="fa fa-edit"> Sign Up</i>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{% url 'passenger_register' %}">Register As Passenger</a>
+              <a class="dropdown-item" href="{% url 'driver_register' %}">Register As Driver</a>
+            </div>
+         </li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'login' %}"><i class="fa fa-sign-in"></i> Login</a></li>
+        {% endif%}
+    </ul>
+  </div>
+</nav>
+<div class="container-fluid">
+<div class="jumbotron">
+  <h1>Welcome To Uni-Abuja Transport Management System</h1>
+  <p>A Simplified transport system around campus...</p>
+  <a href="#about" class="btn btn-secondary">Read About</a>
+</div>
+</div>
+    {% block content %} {% endblock %}
+
+<div id="about">
+     <div class=" mt-5" >
+      <div class="row no-gutters">
+        <div class="col-md-5 crdf">
+
+        </div>
+        <div class="col-md-7">
+          <div class="card-body">
+            <h5 class="card-title">About Uni-Abuja Transport Management System</h5>
+            <p class="card-text">
+                This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+                You asked, Font Awesome delivers with 41 shiny new icons in version 4.7. Want to request new icons? Here's how. Need vectors or want to use on the desktop? Check the cheatsheet.
+                You asked, Font Awesome delivers with 41 shiny new icons in version 4.7. Want to request new icons? Here's how. Need vectors or want to use on the desktop? Check the cheatsheet.
+                You asked, Font Awesome delivers with 41 shiny new icons in version 4.7. Want to request new icons? Here's how. Need vectors or want to use on the desktop? Check the cheatsheet.
+                You asked, Font Awesome delivers with 41 shiny new icons in version 4.7. Want to request new icons? Here's how. Need vectors or want to use on the desktop? Check the cheatsheet.
+                You asked, Font Awesome delivers with 41 shiny new icons in version 4.7. Want to request new icons? Here's how. Need vectors or want to use on the desktop? Check the cheatsheet.
+                You asked, Font Awesome delivers with 41 shiny new icons in version 4.7. Want to request new icons? Here's how. Need vectors or want to use on the desktop? Check the cheatsheet.
+                You asked, Font Awesome delivers with 41 shiny new icons in version 4.7. Want to request new icons? Here's how. Need vectors or want to use on the desktop? Check the cheatsheet.
+                You asked, Font Awesome delivers with 41 shiny new icons in version 4.7. Want to request new icons? Here's how. Need vectors or want to use on the desktop? Check the cheatsheet.
+                You asked, Font Awesome delivers with 41 shiny new icons in version 4.7. Want to request new icons? Here's how. Need vectors or want to use on the desktop? Check the cheatsheet.
+            </p>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+ </div>
+ <div class="container mtn">
+     <div class="card">
+         <div class="card-header">
+             <h3 class="text-center">Contact-Us</h3>
+         </div>
+          <div class="card-body">
+             <form>
+              <div class="form-group">
+                <label>Email address</label>
+                <input type="email" class="form-control">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+              </div>
+              <div class="form-group">
+                <label>Name</label>
+                <input type="text" class="form-control" placeholder="Name" >
+              </div>
+
+                 <div class="form-group">
+                  <label for="comment">Body:</label>
+                  <textarea class="form-control" rows="5" id="comment"></textarea>
+                </div>
+
+              <button type="submit" class="btn btn-primary btn-block">Send</button>
+            </form>
+         </div>
+     </div>
+ </div>
+<footer class="footer mt-auto py-3 bg-dark">
+      <div class="container">
+        <span class="text-muted">&copy; 2021 Uni-Abuja TMS</span>
+      </div>
+ </footer>
+ <script src="{% static 'js/jquery.min.js' %}"></script>
+ <script src="{% static 'js/bootstrap.js' %}"></script>
+</body>
+</html>

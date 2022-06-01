@@ -1,0 +1,18 @@
+{% extends "users/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container frm">
+	<div class="row text-center">
+        <div class="col-10 col-md-8 col-lg-6 mx-auto">
+        <br><br> <h2 style="color:#0fad00; font-weight:700; font-family: 'Lobster', cursive;">Success</h2>
+        <i class="fa fa-check-circle"></i>
+        <p style="font-size:20px;color:#5C5C5C;font-weight:700; font-family: 'Lobster', cursive;">Thank you for correctly filling the registrations form
+        You can login.</p>
+        <a href="{% url 'login' %}" class="btn btn-success"> Log in</a>
+        <a href="{% url 'home' %}" class="btn btn-success"> Home</a>
+    <br><br>
+        </div>
+
+	</div>
+</div>
+{% endblock content %}

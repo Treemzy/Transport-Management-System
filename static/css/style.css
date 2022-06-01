@@ -1,0 +1,144 @@
+body {
+    background-color:#eee !important;
+    }
+.container-fluid {padding:50px;}
+.container{background-color:white;padding:50px;   }
+#title{font-family: 'Lobster', cursive;;}
+.frm{
+    margin-top:100px;
+}
+.frm i {
+    font-size:100px;
+    color:#0fad00;
+}
+
+.main-head{
+    height: 150px;
+    background: #FFF;
+
+}
+
+.sidenav {
+    height: 100%;
+    background-color: #008080;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+
+.main {
+    padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+}
+
+@media screen and (max-width: 450px) {
+    .login-form{
+        margin-top: 10%;
+    }
+
+    .register-form{
+        margin-top: 10%;
+    }
+}
+
+@media screen and (min-width: 768px){
+    .main{
+        margin-left: 40%;
+    }
+
+    .sidenav{
+        width: 40%;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+    }
+
+    .login-form{
+        margin-top: 80%;
+    }
+
+    .register-form{
+        margin-top: 20%;
+    }
+}
+
+
+.login-main-text{
+    margin-top: 20%;
+    padding: 60px;
+    color: #fff;
+}
+
+.login-main-text h2{
+    font-weight: 300;
+}
+
+.btn-black{
+    background-color: #008080 !important;
+    color: #fff !important;
+}
+.frmw{
+    margin-top:80px;
+}
+.article-img {
+    position: relative;
+	height: 100px;
+	width: 100px;
+	border-radius: 50%;
+	left: 20%;
+}
+
+.user-avatar img {
+	height: 120px;
+	width: 120px;
+	border-radius: 50%;
+	border: 3px solid #777;
+}
+
+
+.profile-name {
+	font-size: 1.2rem;
+	color: #3249b9;
+	font-weight: 600;
+	text-align: center;
+}
+
+.profile-designation {
+	font-size: 13px;
+	color: #777;
+	text-align: center;
+}
+
+.profile-description {
+	padding: 10px;
+	font-size: 13px;
+	color: #777;
+	margin: 5px 0px;
+	background-color: #F1F2F3;
+	border-radius: 5px;
+}
+
+ul.about {
+    list-style: none;
+    color: black;
+	padding: 0;
+}
+li.about-items {
+    margin: 0px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+li.about-items i {
+color:#607d8b;
+}
+span.about-item-name {
+    width: 100px;
+	margin-left: 10px;
+}
+
+
+
